@@ -1,0 +1,23 @@
+﻿@model Web.Mobile.Models.SponsorshipOverview
+
+@{
+    ViewBag.Title = "SponsorshipOverview";
+}
+@{
+    var firstSponsoredDev = Model.SponsoredDevelopers.FirstOrDefault();
+  }
+@{
+    if (firstSponsoredDev != null)
+    {
+        <div style=" float:none; clear:right; max-height:100%; max-width:100%; overflow:hidden;">
+            <h2>@firstSponsoredDev.DeveloperName</h2>
+            <img src="@firstSponsoredDev.ImageUrl" alt="@firstSponsoredDev.DeveloperName + image" width="40%" height="100%" style="float:left; margin-right: 10px;" />
+            @firstSponsoredDev.Bio
+        </div>
+    }
+    
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

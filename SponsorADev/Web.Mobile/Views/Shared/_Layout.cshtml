@@ -16,6 +16,14 @@
             });
         </script>
         <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mobile-1.0b2.min.js")"></script>
+        <style>
+            .footerLinkLi
+            {
+                display:inline; 
+                list-style-type:none; 
+                padding-right:5px;   
+            }
+        </style>
     </head> 
 <body> 
     <div data-role="page" data-theme="b">
@@ -31,10 +39,11 @@
 	    <div data-role="content">	
 		    @RenderBody()
 	        <div>
-                <img src="@Url.Content("~/Content/glyphicons/glyphicons_018_note.png")" width="20%" />
-                <img src="@Url.Content("~/Content/glyphicons/glyphicons_012_heart.png")" width="20%" />
-                <img src="@Url.Content("~/Content/glyphicons/glyphicons_010_envelope.png")" width="20%" />
-                <div></div>
+                <ul data-role="navbar">
+                    <li class="footerLinkLi"><img src="@Url.Content("~/Content/glyphicons/glyphicons_018_note.png")" width="20%" /></li>
+                    <li class="footerLinkLi"><img src="@Url.Content("~/Content/glyphicons/glyphicons_012_heart.png")" width="20%" /></li>
+                    <li class="footerLinkLi"><img src="@Url.Content("~/Content/glyphicons/glyphicons_010_envelope.png")" width="20%" /></li>
+                </ul>
             </div>
         </div>
         

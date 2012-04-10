@@ -18,7 +18,11 @@
         {
             <div id="devSelector" style="padding-top:5px; padding-bottom:5px; margin-top:5px; margin-bottom:5px; border-style:dashed; background-color:Gray; ">
                 @foreach(var dev in Model.SponsoredDevelopers){
-                    <img src="@dev.ImageUrl" alt="Open @dev.DeveloperName + profile." />
+                    <a href="@Url.Action("SponsorMiniProfile", "Sponsorship", new { name = dev.DeveloperName })">
+                        <img src="@Url.Content(@dev.ImageUrl)" alt="@dev.DeveloperName"/>
+                    </a>
+                    @*@Html.ActionLink(" ", "SponsorMiniProfile", "Sponsorship", new { name = dev.DeveloperName }, new { style = "background: url('" + dev.ImageUrl + "') no-repeat center right;display:block;" })*@
+                    @*<img src="@dev.ImageUrl" alt="Open @dev.DeveloperName + profile." />*@
                 }
                     
             </div>       

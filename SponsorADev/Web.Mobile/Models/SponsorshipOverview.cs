@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Web.Mobile.Models
 {
     public class SponsorshipOverview
     {
         public List<SponsoredDeveloper> SponsoredDevelopers { get; set; }
+
+        public SponsoredDeveloper SelectedDeveloper { get; set; }
     }
 
     public class SponsoredDeveloper

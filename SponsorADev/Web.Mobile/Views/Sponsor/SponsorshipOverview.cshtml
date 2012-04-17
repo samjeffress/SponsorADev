@@ -7,24 +7,20 @@
     var firstSponsoredDev = Model.SponsoredDevelopers.FirstOrDefault();
   }
 @{
-    if (firstSponsoredDev != null)
+    if (Model.SelectedDeveloper != null)
     {
-        <div style=" float:none; clear:right; max-height:100%; max-width:100%; overflow:hidden;">
-            <h2>@firstSponsoredDev.DeveloperName</h2>
-            <img src="@firstSponsoredDev.ImageUrl" alt="@firstSponsoredDev.DeveloperName + image" width="40%" height="100%" style="float:left; margin-right: 10px;" />
-            @firstSponsoredDev.Bio
+        <div id="devMiniProfile" style=" float:none; clear:right; max-height:100%; max-width:100%; overflow:hidden;">
+            <h2>@Model.SelectedDeveloper.DeveloperName</h2>
+            <img src="@Model.SelectedDeveloper.ImageUrl" alt="@Model.SelectedDeveloper.DeveloperName + image" width="40%" height="100%" style="float:left; margin-right: 10px;" />
+            @Model.SelectedDeveloper.Bio
         </div>
-        if(Model.SponsoredDevelopers.Count > 1)
+        if (Model.SponsoredDevelopers.Count > 1)
         {
             <div id="devSelector" style="padding-top:5px; padding-bottom:5px; margin-top:5px; margin-bottom:5px; border-style:dashed; background-color:Gray; ">
-                @foreach(var dev in Model.SponsoredDevelopers){
-                    <a href="@Url.Action("SponsorMiniProfile", "Sponsorship", new { name = dev.DeveloperName })">
-                        <img src="@Url.Content(@dev.ImageUrl)" alt="@dev.DeveloperName"/>
-                    </a>
-                    @*@Html.ActionLink(" ", "SponsorMiniProfile", "Sponsorship", new { name = dev.DeveloperName }, new { style = "background: url('" + dev.ImageUrl + "') no-repeat center right;display:block;" })*@
-                    @*<img src="@dev.ImageUrl" alt="Open @dev.DeveloperName + profile." />*@
+                @foreach (var dev in Model.SponsoredDevelopers)
+                {
+                    <img src="@Url.Content(@dev.ImageUrl)" alt="@dev.DeveloperName" onclick='$.mobile.changePage("@Url.Action("DeveloperView", "Sponsor", new { developerName = dev.DeveloperName })", { transition: "slideup" })'/>
                 }
-                    
             </div>       
         }
     }
